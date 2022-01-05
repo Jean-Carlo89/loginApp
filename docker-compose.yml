@@ -22,7 +22,9 @@ services:
        
 
     app:
-      build: ./
+      build: 
+        context: .
+        dockerfile: Dockerfile
       container_name: loginApp
       #entrypoint: dockerize -wait tcp://db:3306 -timeout 20s node dist/app.js
       ports:
@@ -39,6 +41,7 @@ services:
       depends_on: 
         - db
       command: npm run dev
+      #command: node dist/app.js
 
 
 # networks: 

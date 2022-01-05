@@ -1,9 +1,10 @@
-FROM node:latest
+FROM node:alpine
 
-WORKDIR /usr/src/app
+WORKDIR /app
 COPY package.json ./
+COPY tsconfig*.json ./
 RUN npm install
-COPY . .
+COPY . ./
 RUN npx tsc .
 #RUN npm run build
 # RUN apt-get update && apt-get install -y wget
