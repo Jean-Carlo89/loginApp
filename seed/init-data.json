@@ -1,0 +1,22 @@
+[
+
+    {
+        "name" : "Isic dev 1",
+        "email" : "isicdev1@test.com",
+        "hash" : "hash string 1"
+    },
+
+    {
+        "name" : "Isic dev 2",
+        "email" : "isicdev2@test.com",
+        "hash" : "hash string 2"
+    },
+
+    {
+        "name" : "Isic dev 3",
+        "email" : "isicdev3@test.com",
+        "hash" : "hash string 3"
+    }
+
+    
+]

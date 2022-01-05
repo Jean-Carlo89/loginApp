@@ -11,7 +11,7 @@ services:
         restart: always
         volumes:
           - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo-js:ro
-          - ./mongodb:/data/db
+          - ./mongodb-seed:/data/db
         environment: 
             - MONGO_INITDB_DATABASE=users
             - MONGO_INITDB_ROOT_USERNAME=root
@@ -19,6 +19,13 @@ services:
         #tty: true
         # networks: 
         #   - node-network
+    mongo-seed:
+      build: ./seed
+      links:
+        - db
+      depends_on:
+        - db
+
        
 
     app:
