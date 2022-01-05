@@ -4,7 +4,9 @@ import {connectToMongoDb,connectionexport} from "./database"
 
 
 const app = express()
-const port = process.env.PORT || 3000
+// const port = process.env.PORT || 3000
+
+const port = 3000
 
 app.use(cors())
 
@@ -16,7 +18,7 @@ const database = connectionexport
 
 
 
-const myarray  = await database.db().listCollections().toArray()
+//const myarray  = await database.db().listCollections().toArray()
 
 const x = await database.db("users").collection("usersInfo").findOne()
 
@@ -34,6 +36,7 @@ app.get("/test",(req,res)=>{
 
 
 const server = app.listen(port,async()=>{
+    console.log(port)
     await connectToMongoDb()
     //console.log(app.locals.bd())
     process.on('SIGINT',()=>{

@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "NODE_ENV=test nodemon src/app.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev2": "NODE_ENV=test nodemon dist/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tsc -b"
   },
   "keywords": [],
   "author": "",

@@ -6,7 +6,7 @@ services:
     db:
         image: mongo
         ports:
-          - 7017:27017
+          - 27017:27017
         container_name: mongodb
         restart: always
         volumes:
@@ -27,6 +27,7 @@ services:
       #entrypoint: dockerize -wait tcp://db:3306 -timeout 20s node dist/app.js
       ports:
         - "3000:3000"
+        - "3001:80"
       # networks: 
       #   - node-network
       # volumes:
@@ -37,7 +38,7 @@ services:
         - db
       depends_on: 
         - db
-      command: node dist/app.js
+      command: npm run dev
 
 
 # networks: 
