@@ -1,0 +1,45 @@
+version: '3'
+
+services: 
+   
+
+    db:
+        image: mongo
+        ports:
+          - 7017:27017
+        container_name: mongodb
+        restart: always
+        volumes:
+          - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo-js:ro
+          - ./mongodb:/data/db
+        environment: 
+            - MONGO_INITDB_DATABASE=users
+            - MONGO_INITDB_ROOT_USERNAME=root
+            - MONGO_INITDB_ROOT_PASSWORD=root
+        #tty: true
+        # networks: 
+        #   - node-network
+       
+
+    app:
+      build: ./
+      container_name: loginApp
+      #entrypoint: dockerize -wait tcp://db:3306 -timeout 20s node dist/app.js
+      ports:
+        - "3000:3000"
+      # networks: 
+      #   - node-network
+      # volumes:
+      #   - /usr/src/app
+      
+      #tty: true
+      links: 
+        - db
+      depends_on: 
+        - db
+      command: node dist/app.js
+
+
+# networks: 
+#   node-network:
+#     driver: bridge  
