@@ -32,8 +32,7 @@ services:
         - "3001:80"
       # networks: 
       #   - node-network
-      # volumes:
-      #   - /usr/src/app
+      
       
       #tty: true
       links: 
