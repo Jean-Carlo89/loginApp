@@ -58,7 +58,7 @@ app.post('/loginAttempt', async (req,res)=>{
             res.status(200).send("Authenticated login");
           break;
           case false:
-            res.status(403).send("incorrect email and/or password");
+            res.status(401).send("incorrect email and/or password");
           break;
         default:
           res.send("an error occured").status(500)
@@ -66,7 +66,7 @@ app.post('/loginAttempt', async (req,res)=>{
 
     }
     else{
-        res.status(400).json({message:"Username and password required."})
+        res.status(400).json({message:"email and password required."})
     }
 
 })
