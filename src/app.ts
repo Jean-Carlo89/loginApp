@@ -42,8 +42,8 @@ app.get("/test",(req,res)=>{
 
 app.post('/loginAttempt', async (req,res)=>{
   
-    
-  console.log(req.body)
+    //  ->> -------> Requires email and password in the body
+ 
     
     if(req.body.email && req.body.password){
       
@@ -73,6 +73,8 @@ app.post('/loginAttempt', async (req,res)=>{
 
 
 app.post('/signUp', async (req,res)=>{
+  
+  //  ->> -------> Requires email , username password in the body
   
   if(req.body.username && req.body.password && req.body.email){
       
