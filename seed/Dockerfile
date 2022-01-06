@@ -2,6 +2,7 @@ FROM mongo:bionic
 
 COPY init-data.json /init-data.json
 
+
 CMD mongoimport                                 \
     # Host (docker-compose service name)
     --host db                       \
@@ -13,6 +14,7 @@ CMD mongoimport                                 \
     --db users              \
     --collection usersInfo      \
     --type json                                 \
+    --mode=merge                             \
     --file /init-data.json                      \
     --jsonArray                                 \
     # WARNING! drop collection before run import
