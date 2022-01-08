@@ -1,10 +1,18 @@
 import {connectionexport as connection}  from "../database"
 import * as encryptionHelper from "./encryption"
 
+import {Request} from "express"
+
+// import {SessionData} from "express-session"
+// import {ObjectId} from "mongodb"
+
+// interface User extends SessionData{
+//     user : ObjectId
+// }
 
 
 //login attempt
-export const loginAttempt = async(data:data)=>{
+export const loginAttempt = async(data:data,req:Request)=>{
     const users = connection.db("users").collection("usersInfo")
     try{
         const user = await users.findOne({email:data.email});
@@ -14,8 +22,9 @@ export const loginAttempt = async(data:data)=>{
         if(user && encryptionHelper.compareHash(data.password, user.hash)){
             
             //generate token for session
-            
-            
+           req.session.user = user._id
+            console.log(req.session)
+           //req.session.save()  //gets autommatically called  when session is modified, does not need to be called in most times
             return true
         }else{
            
